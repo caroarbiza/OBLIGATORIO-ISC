@@ -14,7 +14,7 @@ module "alb" {
     {
       name_prefix      = "def"
       backend_protocol = "HTTP"
-      backend_port     = [80, 443]
+      backend_port     = 80
       target_type      = "instance"
       targets = [
         {
@@ -24,14 +24,6 @@ module "alb" {
         {
           target_id = aws_instance.Instancia2.id
           port      = 80
-        },
-        {
-          target_id = aws_instance.Instancia1.id
-          port      = 443
-        },
-        {
-          target_id = aws_instance.Instancia2.id
-          port      = 443
         }
 
       ]
@@ -43,11 +35,6 @@ module "alb" {
     {
       port               = 80
       protocol           = "HTTP"
-      target_group_index = 0
-    },
-    {
-      port               = 443
-      protocol           = "HTTPS"
       target_group_index = 0
     }
   ]
