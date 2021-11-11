@@ -11,7 +11,7 @@ module "db" {
   allocated_storage = 10
 
   name     = "webappdb"
-  username = "obl"y
+  username = "obl"
   password = "obli1234"
   port     = "3306"
 
