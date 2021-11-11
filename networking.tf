@@ -40,7 +40,7 @@ resource "aws_subnet" "subnet_internal_one" {
   tags = {
     Name        = "subnet-internal"
     Terraform   = "True"
-    Description = "Subnet for the instance"
+    Description = "Subnet for the instance1"
   }
 }
 
@@ -52,7 +52,7 @@ resource "aws_subnet" "subnet_internal_two" {
   tags = {
     Name        = "subnet-internal-two"
     Terraform   = "True"
-    Description = "Subnet for the instance"
+    Description = "Subnet for the instance2"
   }
 }
 
