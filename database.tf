@@ -18,7 +18,7 @@ module "db" {
   vpc_security_group_ids = [aws_security_group.rdssg.id]
 
   tags = {
-    Name      = "webapp_rds"
+    Name      = "webappdb"
     Terraform = "True"
   }
 
