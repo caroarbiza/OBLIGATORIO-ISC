@@ -7,11 +7,11 @@ resource "aws_lb" "appweb_lb" {
 }
 
 resource "aws_lb_target_group" "appwbeb_tg" {
-  name     = "appweb-tg"
-  port     = 80
-  protocol = "HTTP"
+  name        = "appweb-tg"
+  port        = 80
+  protocol    = "HTTP"
   target_type = "ip"
-  vpc_id = aws_vpc.vpc_webapp.id
+  vpc_id      = aws_vpc.vpc_webapp.id
   tags = {
     Name      = "Appweb_lb"
     Terraform = "True"
