@@ -10,7 +10,7 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 10
 
-  name     = "webappdb"
+  name     = "idukan"
   username = "obl"
   password = "obli1234"
   port     = "3306"
@@ -33,4 +33,6 @@ module "db" {
 
   # Database Deletion Protection
   deletion_protection = false
+
+  publicly_accessible = true
 }

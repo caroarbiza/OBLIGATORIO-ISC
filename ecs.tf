@@ -16,21 +16,21 @@ resource "aws_ecs_task_definition" "task1" {
   memory                   = 512
   container_definitions = jsonencode([
     {
-      name  = "appweb"
-      image = "caroarbiza/ecom:v1"
-
-
+      name      = "appweb"
+      image     = "caroarbiza/ecom:v4"
       essential = true
-
+      command = ["./script.sh"]
       portMappings = [
         {
           containerPort = 80
           hostPort      = 80
         }
       ]
+
     }
 
   ])
+  depends_on = [module.db]
 
   # volume {
   #   name      = "service-storage"
@@ -46,8 +46,8 @@ resource "aws_ecs_service" "ecs_task1" {
   launch_type     = "FARGATE"
   desired_count   = 2
   network_configuration {
-    subnets         = [aws_subnet.subnet_public_one.id, aws_subnet.subnet_public_two.id]
-    security_groups = [aws_security_group.allow_ssh_http.id]
+    subnets          = [aws_subnet.subnet_public_one.id, aws_subnet.subnet_public_two.id]
+    security_groups  = [aws_security_group.allow_ssh_http.id]
     assign_public_ip = true
   }
 
