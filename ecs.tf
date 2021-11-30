@@ -17,9 +17,9 @@ resource "aws_ecs_task_definition" "task1" {
   container_definitions = jsonencode([
     {
       name      = "appweb"
-      image     = "caroarbiza/ecom:v4"
+      image     = "caroarbiza/ecom:v5"
       essential = true
-      command = ["./script.sh"]
+      command   = ["./script.sh"]
       portMappings = [
         {
           containerPort = 80
@@ -32,10 +32,7 @@ resource "aws_ecs_task_definition" "task1" {
   ])
   depends_on = [module.db]
 
-  # volume {
-  #   name      = "service-storage"
-  #   host_path = "/ecs/service-storage"
-  # }
+
 }
 
 

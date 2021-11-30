@@ -17,6 +17,9 @@ module "db" {
 
   vpc_security_group_ids = [aws_security_group.rdssg.id]
 
+  maintenance_window = "Mon:00:00-Mon:03:00"
+  backup_window      = "03:00-06:00"
+
   tags = {
     Name      = "webappdb"
     Terraform = "True"
@@ -34,5 +37,5 @@ module "db" {
   # Database Deletion Protection
   deletion_protection = false
 
-  publicly_accessible = true
+  #  publicly_accessible = true
 }
