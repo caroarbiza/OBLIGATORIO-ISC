@@ -10,10 +10,10 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 10
 
-  name     = var.db.name
-  username = var.db.user
-  password = var.db.pass
-  port     = var.db.port
+  name     = var.db-name
+  username = var.db-user
+  password = var.db-pass
+  port     = 3306
 
   vpc_security_group_ids = [aws_security_group.rdssg.id]
 

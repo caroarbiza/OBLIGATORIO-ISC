@@ -10,7 +10,7 @@ resource "aws_vpc" "vpc_webapp" {
 }
 
 resource "aws_subnet" "subnet_public_one" {
-  vpc_id                  = var.vpc.id
+  vpc_id                  = aws_vpc.vpc_webapp.id
   cidr_block              = "172.16.1.0/24"
   availability_zone       = var.az[0]
   map_public_ip_on_launch = "true"
@@ -21,7 +21,7 @@ resource "aws_subnet" "subnet_public_one" {
   }
 }
 resource "aws_subnet" "subnet_public_two" {
-  vpc_id                  = var.vpc.id
+  vpc_id                  = aws_vpc.vpc_webapp.id
   cidr_block              = "172.16.2.0/24"
   availability_zone       = var.az[1]
   map_public_ip_on_launch = "true"
@@ -33,7 +33,7 @@ resource "aws_subnet" "subnet_public_two" {
 }
 
 resource "aws_subnet" "subnet_internal_one" {
-  vpc_id                  = var.vpc.id
+  vpc_id                  = aws_vpc.vpc_webapp.id
   cidr_block              = "172.16.3.0/24"
   availability_zone       = var.az[0]
   map_public_ip_on_launch = "true"
@@ -45,7 +45,7 @@ resource "aws_subnet" "subnet_internal_one" {
 }
 
 resource "aws_subnet" "subnet_internal_two" {
-  vpc_id                  = var.vpc.id
+  vpc_id                  = aws_vpc.vpc_webapp.id
   cidr_block              = "172.16.4.0/24"
   availability_zone       = var.az[1]
   map_public_ip_on_launch = "true"
@@ -57,7 +57,7 @@ resource "aws_subnet" "subnet_internal_two" {
 }
 
 resource "aws_internet_gateway" "gateway_obl" {
-  vpc_id = var.vpc.id
+  vpc_id = aws_vpc.vpc_webapp.id
   tags = {
     Name        = "webapp-gateway"
     Terraform   = "True"
