@@ -2,7 +2,7 @@ resource "aws_lb" "appweb_lb" {
   name               = "appweb-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.allow_ssh_http.id]
+  security_groups    = [aws_security_group.allow_http.id]
   subnets            = [aws_subnet.subnet_public_one.id, aws_subnet.subnet_public_two.id]
 }
 

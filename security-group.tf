@@ -1,22 +1,10 @@
-resource "aws_security_group" "allow_ssh_http" {
-  name        = "allow_ssh_http"
-  description = "Allow SSH & HTTP/S inbound traffic"
+resource "aws_security_group" "allow_http" {
+  name        = "allow_http"
+  description = "Allow HTTP/S inbound traffic"
   vpc_id      = aws_vpc.vpc_webapp.id
 
   ingress = [
-    {
-      description      = "SSH from VPC"
-      from_port        = 22
-      to_port          = 22
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      security_groups  = []
-      self             = false
 
-    },
     {
       description      = "HTTP from VPC"
       from_port        = 80
@@ -47,7 +35,7 @@ resource "aws_security_group" "allow_ssh_http" {
 
   egress = [
     {
-      description      = "SSH & HTTP"
+      description      = "HTTP"
       from_port        = 0
       to_port          = 0
       protocol         = "-1"
@@ -63,7 +51,7 @@ resource "aws_security_group" "allow_ssh_http" {
   ]
 
   tags = {
-    Name = "allow_SSH_HTTP"
+    Name = "allow_HTTP"
   }
 }
 

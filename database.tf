@@ -10,10 +10,10 @@ module "db" {
   instance_class    = "db.t3.micro"
   allocated_storage = 10
 
-  name     = "idukan"
-  username = "obl"
-  password = "obli1234"
-  port     = "3306"
+  name     = var.db.name
+  username = var.db.user
+  password = var.db.pass
+  port     = var.db.port
 
   vpc_security_group_ids = [aws_security_group.rdssg.id]
 
@@ -37,5 +37,4 @@ module "db" {
   # Database Deletion Protection
   deletion_protection = false
 
-  #  publicly_accessible = true
 }

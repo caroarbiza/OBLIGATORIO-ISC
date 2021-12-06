@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "task1" {
   container_definitions = jsonencode([
     {
       name      = "appweb"
-      image     = "caroarbiza/ecom:v5"
+      image     = "caroarbiza/ecom:v4"
       essential = true
       command   = ["./script.sh"]
       portMappings = [
@@ -44,7 +44,7 @@ resource "aws_ecs_service" "ecs_task1" {
   desired_count   = 2
   network_configuration {
     subnets          = [aws_subnet.subnet_public_one.id, aws_subnet.subnet_public_two.id]
-    security_groups  = [aws_security_group.allow_ssh_http.id]
+    security_groups  = [aws_security_group.allow_http.id]
     assign_public_ip = true
   }
 
